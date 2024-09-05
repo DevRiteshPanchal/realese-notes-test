@@ -24,6 +24,5 @@ jobs:
           # this is a built-in strategy in release-please, see "Action Inputs"
           # for more options
           release-type: node
-          bump-minor-pre-major: true
-          bump-patch-for-minor-pre-major: true
-          release-as: auto
+          skip-github-pull-request: true  # Skip creating a PR and directly release
+          skip-github-release: false
