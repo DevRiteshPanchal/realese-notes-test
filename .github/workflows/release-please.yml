@@ -25,6 +25,9 @@ jobs:
           # for more options
           # release-type: node
           config-file: release-please-config.json
+
+      - name: Install Release Please
+        run: npm install -g release-please
            
       - name: Publish Release
         env:
