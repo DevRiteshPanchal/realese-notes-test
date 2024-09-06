@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/DevRiteshPanchal/realese-notes-test/compare/realese-notes-test.v1.2.1...realese-notes-test.v1.3.0) (2024-09-06)
+
+
+### Features
+
+* square ([de8adce](https://github.com/DevRiteshPanchal/realese-notes-test/commit/de8adce8ff5b376fcb6c78a5c9e7d97c927d8c22))
+
 ## [1.2.1](https://github.com/DevRiteshPanchal/realese-notes-test/compare/realese-notes-test-v1.2.0...realese-notes-test.v1.2.1) (2024-09-06)
 
 
