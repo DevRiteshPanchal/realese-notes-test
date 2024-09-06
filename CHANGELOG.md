@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/DevRiteshPanchal/realese-notes-test/compare/realese-notes-test-v1.0.0...realese-notes-test-v1.1.0) (2024-09-06)
+
+
+### Features
+
+* add multiply method ([589f740](https://github.com/DevRiteshPanchal/realese-notes-test/commit/589f7407ad558ecaf780567fd4d8b6711d533235))
+
 ## 1.0.0 (2024-09-06)
 
 
