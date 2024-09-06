@@ -19,6 +19,7 @@ jobs:
         with:
           token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
           config-file: release-please-config.json
+          full-changelog: true
           manifest-file: .release-please-manifest.json
 
       # Step 2: Install jq for JSON processing
