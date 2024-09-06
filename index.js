@@ -12,3 +12,7 @@ const subtract =(a,b)=>{
 const divide =(a,b)=>{
   return a/b
 }
+const square =(a,b)=>{
+  return a**b
+}
+
