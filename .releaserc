@@ -1,6 +1,6 @@
 {
   "branches": ["main"],
-  "repositoryUrl": "https://github.com/username/repository",
+  "repositoryUrl": "https://github.com/DevRiteshPanchal/realese-notes-test",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
