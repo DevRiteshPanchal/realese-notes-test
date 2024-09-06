@@ -19,7 +19,6 @@ jobs:
         with:
           token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
           config-file: release-please-config.json
-          full-changelog: true
           manifest-file: .release-please-manifest.json
 
       # Step 2: Install jq for JSON processing
@@ -46,6 +45,7 @@ jobs:
 
             if [[ -n "$PR_NUMBER" ]]; then
               echo "PR found! The PR number is: $PR_NUMBER"
+              echo "::set-output name=pr_number::$PR_NUMBER"
               break
             else
               echo "PR not found, waiting for $SLEEP_INTERVAL seconds..."
