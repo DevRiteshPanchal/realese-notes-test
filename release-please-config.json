@@ -13,5 +13,5 @@
 	},
 	"pull-request-title-pattern": "Prepare release: v${version}",
   "plugins": [],
-  "include-component-in-tag":false,
+  "include-component-in-tag":false
 }
