@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.1.0](https://github.com/DevRiteshPanchal/realese-notes-test/compare/realese-notes-test-v1.0.0...realese-notes-test-v1.1.0) (2024-09-06)
+
+
+### Features
+
+* add multiply method ([589f740](https://github.com/DevRiteshPanchal/realese-notes-test/commit/589f7407ad558ecaf780567fd4d8b6711d533235))
+* subtract method ([d23c59c](https://github.com/DevRiteshPanchal/realese-notes-test/commit/d23c59cd61d8e92fde93afd1363038581a0a90e0))
+
+
+### Bug Fixes
+
+* config ([aa26d4d](https://github.com/DevRiteshPanchal/realese-notes-test/commit/aa26d4d0417b3ccf5d1fa7c7e12ea97213e96344))
+* config ([462b364](https://github.com/DevRiteshPanchal/realese-notes-test/commit/462b3641e2c80d1751c2a01911622b77e4ff3b42))
+* congfig ([956b283](https://github.com/DevRiteshPanchal/realese-notes-test/commit/956b2830b7463863f19fceab9cea0b54ad5dc39c))
+* title ([e6e5900](https://github.com/DevRiteshPanchal/realese-notes-test/commit/e6e5900d75c15426a4729f0f6dd5aa6565a14e60))
+
 ## 1.0.0 (2024-09-06)
 
 
