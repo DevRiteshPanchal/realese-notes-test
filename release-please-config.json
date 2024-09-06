@@ -11,5 +11,6 @@
     }
 	},
 	"pull-request-title-pattern": "Prepare release: v${version}",
-  "plugins": []
+  "plugins": [],
+  "include-component-in-tag":false
 }
