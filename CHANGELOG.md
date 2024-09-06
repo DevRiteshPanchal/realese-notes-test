@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.2](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v1.4.1...v1.4.2) (2024-09-06)
+
+
+### Bug Fixes
+
+* trying to merge pr ([38d1f15](https://github.com/DevRiteshPanchal/realese-notes-test/commit/38d1f153c132f885e5cfaeb4a69a06b89298a222))
+* trying to merge PR ([5366249](https://github.com/DevRiteshPanchal/realese-notes-test/commit/5366249962395a27eb470ca14993b56d35fd10b3))
+
 ## [1.4.1](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v1.4.0...v1.4.1) (2024-09-06)
 
 
