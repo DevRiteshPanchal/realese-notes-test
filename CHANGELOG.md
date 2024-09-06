@@ -1,5 +1,36 @@
 # Changelog
 
+## [1.4.0](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v1.3.0...v1.4.0) (2024-09-06)
+
+
+### Features
+
+* add index file ([087f195](https://github.com/DevRiteshPanchal/realese-notes-test/commit/087f19550a08eb87089b099f5bf66883fb2f3502))
+* add multiply method ([589f740](https://github.com/DevRiteshPanchal/realese-notes-test/commit/589f7407ad558ecaf780567fd4d8b6711d533235))
+* add two number ([2d045df](https://github.com/DevRiteshPanchal/realese-notes-test/commit/2d045dfa3ee7aaceccd699662340e84e608f13bd))
+* devide ([9170eed](https://github.com/DevRiteshPanchal/realese-notes-test/commit/9170eedb4cba9d91d8e000ba0d228db23677d3fb))
+* square ([de8adce](https://github.com/DevRiteshPanchal/realese-notes-test/commit/de8adce8ff5b376fcb6c78a5c9e7d97c927d8c22))
+* subtract method ([d23c59c](https://github.com/DevRiteshPanchal/realese-notes-test/commit/d23c59cd61d8e92fde93afd1363038581a0a90e0))
+
+
+### Bug Fixes
+
+* add amnifest file ([7af7265](https://github.com/DevRiteshPanchal/realese-notes-test/commit/7af726553a9a52d47c300929dd13049d2b2edbd4))
+* add properlty in config ([97c609f](https://github.com/DevRiteshPanchal/realese-notes-test/commit/97c609f11324156810d469b9c441d86ae3b437ba))
+* auto release ([450e187](https://github.com/DevRiteshPanchal/realese-notes-test/commit/450e187c50cc640ce68327bdade5dec337d4e068))
+* config ([aa26d4d](https://github.com/DevRiteshPanchal/realese-notes-test/commit/aa26d4d0417b3ccf5d1fa7c7e12ea97213e96344))
+* config ([462b364](https://github.com/DevRiteshPanchal/realese-notes-test/commit/462b3641e2c80d1751c2a01911622b77e4ff3b42))
+* configure manifest file ([ceec31c](https://github.com/DevRiteshPanchal/realese-notes-test/commit/ceec31c64ce68d123a44c4999ca694f54437dfe5))
+* congfig ([956b283](https://github.com/DevRiteshPanchal/realese-notes-test/commit/956b2830b7463863f19fceab9cea0b54ad5dc39c))
+* delete manifest ([66db2d2](https://github.com/DevRiteshPanchal/realese-notes-test/commit/66db2d2445e7545080d3b4eae01a1ae5e92fccd9))
+* enable auto release ([e9235da](https://github.com/DevRiteshPanchal/realese-notes-test/commit/e9235da3fe848262ef7cd85aaa911050c4773883))
+* fix manifest ([709a4da](https://github.com/DevRiteshPanchal/realese-notes-test/commit/709a4daa2885521a2e9c140dd10edf3b6a80f5d2))
+* manifest ([23c6c58](https://github.com/DevRiteshPanchal/realese-notes-test/commit/23c6c58fcbcbd474db800597b6c368123ef5e125))
+* relaes ([f286407](https://github.com/DevRiteshPanchal/realese-notes-test/commit/f28640766db584e098d46486a7461d91f6b02976))
+* release tagging ([fcc5b11](https://github.com/DevRiteshPanchal/realese-notes-test/commit/fcc5b11088160b4f2b87209513e01aadf639e031))
+* title ([e6e5900](https://github.com/DevRiteshPanchal/realese-notes-test/commit/e6e5900d75c15426a4729f0f6dd5aa6565a14e60))
+* try pr merge fix ([bd136af](https://github.com/DevRiteshPanchal/realese-notes-test/commit/bd136afe0f2543e24b5eac416afb0ae2f09085d0))
+
 ## [1.3.0](https://github.com/DevRiteshPanchal/realese-notes-test/compare/realese-notes-test.v1.2.1...realese-notes-test.v1.3.0) (2024-09-06)
 
 
