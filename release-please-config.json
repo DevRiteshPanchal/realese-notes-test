@@ -1,5 +1,4 @@
 {
-	"skip-github-pull-request": true,
 	"bump-minor-pre-major": true,
 	"bump-patch-for-minor-pre-major": true,
 	"release-type": "node",
@@ -7,5 +6,6 @@
 	"packages": {
 		".": {}
 	},
-	"pull-request-title-pattern": "Prepare release: v${version}"
+	"pull-request-title-pattern": "Prepare release: v${version}",
+  "include-component-in-tag": false
 }

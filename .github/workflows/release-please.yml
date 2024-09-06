@@ -21,6 +21,7 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
+
       # # Step 2: Install jq for JSON processing
       # - name: Install jq
       #   run: sudo apt-get install jq
