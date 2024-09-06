@@ -4,14 +4,9 @@
 	"bump-patch-for-minor-pre-major": true,
 	"release-type": "node",
 	"include-v-in-tag": true,
-  "tag-separator": ".", 
 	"packages": {
-		".": {
-      "component": "" 
-    }
+		".": {}
 	},
 	"pull-request-title-pattern": "Prepare release: v${version}",
-  "plugins": [],
-  "include-component-in-tag":false,
-  "full-changelog": true
+	"include-component-in-tag": false
 }
