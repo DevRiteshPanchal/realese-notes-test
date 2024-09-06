@@ -32,4 +32,4 @@ jobs:
       - name: Publish Release
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
-        run: release-please github-release --token=${{ secrets.MY_RELEASE_PLEASE_TOKEN }} --default-branch=main 
+        run: release-please github-release --token=${{ secrets.MY_RELEASE_PLEASE_TOKEN }} --repo-url=DevRiteshPanchal/realese-notes-test --default-branch=main 
