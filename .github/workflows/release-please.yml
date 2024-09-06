@@ -25,27 +25,47 @@ jobs:
           # for more options
           # release-type: node
           config-file: release-please-config.json
-          manifest-file: .release-please-manifest.json          
-      - name: Get pull request created by current workflow
-        id: pr
+          manifest-file: .release-please-manifest.json  
+
+      - name: Install jq
+        run: sudo apt-get install jq
+
+      - name: Wait for PR creation
+        id: wait-for-pr
         run: |
-          PR_URL=$(curl -s -H "Authorization: token ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}" \
-            "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&head=${{ github.repository_owner }}:release-"$(date +%Y%m%d)) 
-          
-          # Check if any PR was returned
+          MAX_ATTEMPTS=10
+          SLEEP_INTERVAL=30
+          COUNTER=0
+          PR_URL=""
+
+          while [ $COUNTER -lt $MAX_ATTEMPTS ]; do
+            echo "Checking for release PR (Attempt $((COUNTER+1))/$MAX_ATTEMPTS)..."
+
+            # Check for the pull request created by the current workflow
+            PR_URL=$(curl -s -H "Authorization: token ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}" \
+              "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&head=${{ github.repository_owner }}:release-please%2Fbranches%2Fmain")
+
+            if [[ "$PR_URL" != "[]" ]]; then
+              echo "PR found!"
+              PR_NUMBER=$(echo $PR_URL | jq -r '.[0].number')
+              echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
+              break
+            fi
+
+            echo "PR not found, waiting for $SLEEP_INTERVAL seconds..."
+            COUNTER=$((COUNTER+1))
+            sleep $SLEEP_INTERVAL
+          done
+
+          # If no PR was found after all attempts, fail the job
           if [[ "$PR_URL" == "[]" ]]; then
-            echo "No PR found for the current release."
+            echo "No PR found after $MAX_ATTEMPTS attempts, failing the job."
             exit 1
           fi
 
-          # Extract PR number from the JSON response
-          PR_NUMBER=$(echo $PR_URL | jq -r '.[0].number')
-          echo "::set-output name=pr_number::$PR_NUMBER"
-
-      # Merge the PR
       - name: Merge the pull request
         run: |
-          PR_NUMBER=${{ steps.pr.outputs.pr_number }}
+          PR_NUMBER=${{ env.PR_NUMBER }}
           curl -X PUT -H "Authorization: token ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/${{ github.repository }}/pulls/$PR_NUMBER/merge \
