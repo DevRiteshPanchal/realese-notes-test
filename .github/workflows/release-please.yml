@@ -24,4 +24,9 @@ jobs:
           # this is a built-in strategy in release-please, see "Action Inputs"
           # for more options
           # release-type: node
-          config-file: release-please-config.json     
+          config-file: release-please-config.json
+           
+      - name: Publish Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+        run: release-please github-release --token=${{ secrets.MY_RELEASE_PLEASE_TOKEN }} --default-branch=main 
