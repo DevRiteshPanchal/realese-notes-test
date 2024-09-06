@@ -7,7 +7,7 @@
 	"packages": {
 		".": {}
 	},
-	"pull-request-title-pattern": "Prepare release: {{ version }} - {{ changelogTitle }}",
+	"pull-request-title-pattern": "Prepare release: ${version} - ${changelogTitle}",
 	"pull-request-header": "**Release:** {{ version }} - {{ changelogTitle }}",
 	"pull-request-footer": "**Changelog:** {{ changelogUrl }}"
 }
