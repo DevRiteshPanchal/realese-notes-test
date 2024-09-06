@@ -40,7 +40,7 @@ jobs:
 
           while [ $COUNTER -lt $MAX_ATTEMPTS ]; do
             echo "Checking for release PR (Attempt $((COUNTER+1))/$MAX_ATTEMPTS)..."
-
+            echo "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&head=${{ github.repository_owner }}:release-please%2Fbranches%2Fmain"
             # Check for the pull request created by the current workflow
             PR_URL=$(curl -s -H "Authorization: token ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}" \
               "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&head=${{ github.repository_owner }}:release-please%2Fbranches%2Fmain")
