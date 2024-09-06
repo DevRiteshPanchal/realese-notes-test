@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.3](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v1.5.2...v1.5.3) (2024-09-06)
+
+
+### Bug Fixes
+
+* merging ([3dafdfa](https://github.com/DevRiteshPanchal/realese-notes-test/commit/3dafdfa22c0ce3cc7d2f3b76ff37d1af445ecf06))
+
 ## [1.5.2](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v1.5.1...v1.5.2) (2024-09-06)
 
 
