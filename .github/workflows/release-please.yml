@@ -45,9 +45,12 @@ jobs:
             PR_URL=$(curl -s -H "Authorization: token ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}" \
               "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&head=${{ github.repository_owner }}:release-please%2Fbranches%2Fmain")
 
+            echo "Response: $PR_URL"  # Print the API response for debugging
+
             if [[ "$PR_URL" != "[]" ]]; then
               echo "PR found!"
               PR_NUMBER=$(echo $PR_URL | jq -r '.[0].number')
+              echo "Extracted PR_NUMBER: $PR_NUMBER"  # Print the PR number for debugging
               echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
               break
             fi
@@ -61,12 +64,4 @@ jobs:
           if [[ "$PR_URL" == "[]" ]]; then
             echo "No PR found after $MAX_ATTEMPTS attempts, failing the job."
             exit 1
-          fi
-
-      - name: Merge the pull request
-        run: |
-          PR_NUMBER=${{ env.PR_NUMBER }}
-          curl -X PUT -H "Authorization: token ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/pulls/$PR_NUMBER/merge \
-            -d '{"commit_title":"Merging PR #'"$PR_NUMBER"'", "merge_method":"merge"}'
+          fi      
