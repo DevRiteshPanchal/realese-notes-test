@@ -25,11 +25,28 @@ jobs:
           # for more options
           # release-type: node
           config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json          
+      - name: Get pull request created by current workflow
+        id: pr
+        run: |
+          PR_URL=$(curl -s -H "Authorization: token ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&head=${{ github.repository_owner }}:release-"$(date +%Y%m%d)) 
+          
+          # Check if any PR was returned
+          if [[ "$PR_URL" == "[]" ]]; then
+            echo "No PR found for the current release."
+            exit 1
+          fi
 
-      - name: Install Release Please
-        run: npm install -g release-please
-           
-      - name: Publish Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
-        run: release-please github-release --token=${{ secrets.MY_RELEASE_PLEASE_TOKEN }} --repo-url=DevRiteshPanchal/realese-notes-test --default-branch=main 
+          # Extract PR number from the JSON response
+          PR_NUMBER=$(echo $PR_URL | jq -r '.[0].number')
+          echo "::set-output name=pr_number::$PR_NUMBER"
+
+      # Merge the PR
+      - name: Merge the pull request
+        run: |
+          PR_NUMBER=${{ steps.pr.outputs.pr_number }}
+          curl -X PUT -H "Authorization: token ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/pulls/$PR_NUMBER/merge \
+            -d '{"commit_title":"Merging PR #'"$PR_NUMBER"'", "merge_method":"merge"}'
