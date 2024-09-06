@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v1.4.0...v1.4.1) (2024-09-06)
+
+
+### Bug Fixes
+
+* add repo url ([a5ecd9a](https://github.com/DevRiteshPanchal/realese-notes-test/commit/a5ecd9a6c84a5ccc78ce8416d9ea638865c0a757))
+
 ## [1.4.0](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v1.3.0...v1.4.0) (2024-09-06)
 
 
