@@ -25,5 +25,4 @@ jobs:
           # for more options
           # release-type: node
           config-file: release-please-config.json
-          manifest-file: .release-please-manifest.json
-          publish: true
+          manifest-file: .release-please-manifest.json          
