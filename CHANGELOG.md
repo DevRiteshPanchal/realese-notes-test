@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/DevRiteshPanchal/realese-notes-test/compare/realese-notes-test-v1.2.0...realese-notes-test.v1.2.1) (2024-09-06)
+
+
+### Bug Fixes
+
+* release tagging ([fcc5b11](https://github.com/DevRiteshPanchal/realese-notes-test/commit/fcc5b11088160b4f2b87209513e01aadf639e031))
+
 ## [1.2.0](https://github.com/DevRiteshPanchal/realese-notes-test/compare/realese-notes-test-v1.1.0...realese-notes-test-v1.2.0) (2024-09-06)
 
 
