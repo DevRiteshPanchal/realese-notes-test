@@ -32,15 +32,14 @@ jobs:
         with:
           version: ${{ steps.version.outputs.new_version }}
         env:
-          GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
-
+          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+          echo $GITHUB_TOKEN
       # Push CHANGELOG.md and updated version files (optional)
       - name: Commit Changelog and Package files
         run: |
-          git config --global user.name 'RiteshPanchal16'
-          git config --global user.email 'riteshpanchal16@gmail.com'
-          git config --global credential.helper 'store'
-          echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > ~/.git-credentials
+          echo $GITHUB_TOKEN
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add CHANGELOG.md package.json
           git commit -m "chore(release): update changelog and package.json to v${{ steps.version.outputs.new_version }}"
           git push
