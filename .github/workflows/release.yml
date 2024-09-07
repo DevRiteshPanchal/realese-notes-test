@@ -9,32 +9,22 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      # Log the first few characters of the GitHub token
-      - name: Log GitHub Token (Masked)
-        run: echo "Token starts with: ${MY_RELEASE_PLEASE_TOKEN:0:4}..."
-        env:
-          MY_RELEASE_PLEASE_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
-
       # Checkout the code
       - name: Checkout code
         uses: actions/checkout@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
       # Bump version based on Conventional Commits
       - name: Bump version and tag
         id: version
         uses: phips28/gh-action-bump-version@v10.0.0
         with:
-          tag-prefix: 'v'
-          skip-tag: 'false'
-          default: 'patch'
+          tag-prefix: 'v' 
+          skip-tag: 'false' 
+          default: 'patch' # Choose between major, minor, patch
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
-
-      # Log the first few characters of the GitHub token
-      - name: Log GitHub Token (Masked)
-        run: echo "Token starts with: ${MY_RELEASE_PLEASE_TOKEN:0:4}..."
-        env:
-          MY_RELEASE_PLEASE_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
       # Generate Release Notes
       - name: Release Drafter
