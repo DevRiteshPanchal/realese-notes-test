@@ -33,6 +33,7 @@ jobs:
         git config --global user.name "Your Name"
         git push --follow-tags origin main
 
+<<<<<<< HEAD
     - name: Create draft release with Release Drafter
       uses: release-drafter/release-drafter@v5
       with:
@@ -48,3 +49,38 @@ jobs:
           ${{ steps.version.outputs.release_notes }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+=======
+      # Generate Release Notes
+      - name: Release Drafter
+        uses: release-drafter/release-drafter@v6
+        with:
+          version: ${{ steps.version.outputs.new_version }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+      # Push CHANGELOG.md and updated version files (optional)
+      - name: Commit Changelog and Package files
+        run: |
+=======
+          echo $GITHUB_TOKEN
+      # Push CHANGELOG.md and updated version files (optional)
+      - name: Commit Changelog and Package files
+        run: |
+          echo $GITHUB_TOKEN
+>>>>>>> fix: some
+=======
+
+      # Push CHANGELOG.md and updated version files (optional)
+      - name: Commit Changelog and Package files
+        run: |
+>>>>>>> fix: some
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add CHANGELOG.md package.json
+          git commit -m "chore(release): update changelog and package.json to v${{ steps.version.outputs.new_version }}"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
+>>>>>>> fix: some
