@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
 
       # Bump version based on Conventional Commits
       - name: Bump version and tag
@@ -24,7 +24,7 @@ jobs:
           skip-tag: 'false' 
           default: 'patch' # Choose between major, minor, patch
         env:
-          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
 
       # Generate Release Notes
       - name: Release Drafter
@@ -32,15 +32,17 @@ jobs:
         with:
           version: ${{ steps.version.outputs.new_version }}
         env:
-          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
 
       # Push CHANGELOG.md and updated version files (optional)
       - name: Commit Changelog and Package files
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git config --global user.name 'RiteshPanchal16'
+          git config --global user.email 'riteshpanchal16@gmail.com'
+          git config --global credential.helper 'store'
+          echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > ~/.git-credentials
           git add CHANGELOG.md package.json
           git commit -m "chore(release): update changelog and package.json to v${{ steps.version.outputs.new_version }}"
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
