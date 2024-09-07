@@ -30,7 +30,7 @@ jobs:
           skip-tag: 'false' 
           default: 'patch' # Choose between major, minor, patch
         env:
-          GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Push changes
         run: |
