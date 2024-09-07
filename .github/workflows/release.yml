@@ -1,16 +1,23 @@
+name: Release Automation
+
+on:
+  pull_request:
+    types: [closed]
+
 jobs:
   release:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      # Checkout the code
+      # Log the first few characters of the GitHub token
       - name: Log GitHub Token (Masked)
-        run: echo "Token starts with: ${GITHUB_TOKEN:0:4}..."
-        
+        run: echo "Token starts with: ${MY_RELEASE_PLEASE_TOKEN:0:4}..."
+        env:
+          MY_RELEASE_PLEASE_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+
+      # Checkout the code
       - name: Checkout code
         uses: actions/checkout@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
       # Bump version based on Conventional Commits
       - name: Bump version and tag
@@ -25,7 +32,9 @@ jobs:
 
       # Log the first few characters of the GitHub token
       - name: Log GitHub Token (Masked)
-        run: echo "Token starts with: ${GITHUB_TOKEN:0:4}..."
+        run: echo "Token starts with: ${MY_RELEASE_PLEASE_TOKEN:0:4}..."
+        env:
+          MY_RELEASE_PLEASE_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
       # Generate Release Notes
       - name: Release Drafter
