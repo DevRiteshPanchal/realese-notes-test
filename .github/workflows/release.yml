@@ -1,25 +1,44 @@
-name: Release
+name: Release Automation
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    types: [closed]
 
 jobs:
   release:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-
     steps:
+      # Checkout the code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      # Bump version based on Conventional Commits
+      - name: Bump version and tag
+        id: version
+        uses: phips28/gh-action-bump-version@v10.0.0
         with:
-          node-version: '20.8.1'
+          tag-prefix: 'v' 
+          skip-tag: 'false' 
+          default: 'patch' # Choose between major, minor, patch
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
-      - name: Install dependencies
-        run: npm ci
+      # Generate Release Notes
+      - name: Release Drafter
+        uses: release-drafter/release-drafter@v5
+        with:
+          version: ${{ steps.version.outputs.new_version }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
-      - name: Run Semantic Release
-        run: npx semantic-release
+      # Push CHANGELOG.md and updated version files (optional)
+      - name: Commit Changelog and Package files
+        run: |
+          git config --global user.name 'RiteshPanchal16'
+          git config --global user.email 'riteshpanchal16@gmail.com'
+          git add CHANGELOG.md package.json
+          git commit -m "chore(release): update changelog and package.json to v${{ steps.version.outputs.new_version }}"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
