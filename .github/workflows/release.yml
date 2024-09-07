@@ -31,10 +31,11 @@ jobs:
           version: ${{ steps.version.outputs.new_version }}
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
-
+          echo $GITHUB_TOKEN
       # Push CHANGELOG.md and updated version files (optional)
       - name: Commit Changelog and Package files
         run: |
+          echo $GITHUB_TOKEN
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add CHANGELOG.md package.json
