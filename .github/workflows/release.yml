@@ -3,15 +3,14 @@ name: Release
 on:
   push:
     branches:
-      - main  # Adjust this to the branch you want to release from
+      - main  # Replace with your main branch
 
 jobs:
   release:
-    name: Release
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v3
 
     - name: Set up Node.js
@@ -22,23 +21,30 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Conventional Commits Version Bump
-      id: version
-      uses: conventional-changelog/standard-version@v9.3.2
-      env:
-        GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
-      with:
-        release-count: 1
-
-    - name: Push version tag
+    - name: Bump version using standard-version
       run: |
-        git config --global user.email "youremail@example.com"
-        git config --global user.name "your-github-username"
+        npx standard-version
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Push version and tags
+      run: |
+        git config --global user.email "you@example.com"
+        git config --global user.name "Your Name"
         git push --follow-tags origin main
 
-    - name: Create GitHub Release
+    - name: Create draft release with Release Drafter
+      uses: release-drafter/release-drafter@v5
+      with:
+        version: ${{ steps.version.outputs.version }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Publish the release
+      if: github.event_name == 'push'
       uses: softprops/action-gh-release@v1
       with:
-        body: ${{ steps.version.outputs.release_notes }}
+        body: |
+          ${{ steps.version.outputs.release_notes }}
       env:
-        GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
