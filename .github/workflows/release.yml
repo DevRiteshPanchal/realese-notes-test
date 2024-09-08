@@ -51,8 +51,11 @@ jobs:
       id: release-notes
       run: |
         npx conventional-changelog-cli -p angular -i CHANGELOG.md -s -r 0
+        # Debugging: Print the changelog content to ensure it's correct
         cat CHANGELOG.md
-        echo "RELEASE_NOTES=$(cat CHANGELOG.md)" >> $GITHUB_ENV
+        # Strip any special characters and set the environment variable
+        RELEASE_NOTES=$(cat CHANGELOG.md | sed 's/[^a-zA-Z0-9 ]//g')
+        echo "RELEASE_NOTES=$RELEASE_NOTES" >> $GITHUB_ENV
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
