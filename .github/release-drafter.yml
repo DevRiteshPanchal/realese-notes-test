@@ -1,5 +1,6 @@
 name-template: 'v$NEXT_PATCH_VERSION'
 tag-template: 'v$NEXT_PATCH_VERSION'
+tag-prefix: ''
 categories:
   - title: '🚀 Features'
     label: 'feature'
@@ -9,4 +10,10 @@ categories:
     label: 'chore'
 change-template: '- $TITLE (#$NUMBER) by @$AUTHOR'
 version-resolver:
-  - branch: 'main'
+  branch: main  # Corrected this to be an object
+template: |
+  ## What's Changed
+  $CHANGES
+
+  ### Contributors
+  $CONTRIBUTORS
