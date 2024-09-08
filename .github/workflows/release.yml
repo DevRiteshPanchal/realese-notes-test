@@ -50,7 +50,8 @@ jobs:
     - name: Generate release notes
       id: release-notes
       run: |
-        npx conventional-changelog-cli -p angular -i CHANGELOG.md -s
+        npx conventional-changelog-cli -p angular -i CHANGELOG.md -s -r 0
+        cat CHANGELOG.md
         echo "RELEASE_NOTES=$(cat CHANGELOG.md)" >> $GITHUB_ENV
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
