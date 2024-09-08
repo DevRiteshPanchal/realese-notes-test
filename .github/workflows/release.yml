@@ -1,58 +1,44 @@
-name: Release Automation
+name: Release
 
 on:
-  pull_request:
-    types: [closed]
+  push:
+    branches:
+      - main  # Adjust this to the branch you want to release from
 
 jobs:
   release:
-    if: github.event.pull_request.merged == true
+    name: Release
     runs-on: ubuntu-latest
+
     steps:
-      # Checkout the code
-      - name: Checkout code
-        uses: actions/checkout@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
-      - name: Configure Git Credentials
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${{ secrets.SECRET_TOKEN }}@github.com/${{ github.repository }}
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
 
-      # Bump version based on Conventional Commits
-      - name: Bump version and tag
-        id: version
-        uses: phips28/gh-action-bump-version@master
-        with:
-          tag-prefix: 'v' 
-          skip-tag: 'false' 
-          default: 'patch' # Choose between major, minor, patch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Push changes
-        run: |
-          git push --follow-tags
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Install dependencies
+      run: npm ci
 
-      # Generate Release Notes
-      - name: Release Drafter
-        uses: release-drafter/release-drafter@v6
-        with:
-          version: ${{ steps.version.outputs.new_version }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+    - name: Conventional Commits Version Bump
+      id: version
+      uses: conventional-changelog/standard-version@v9.3.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+      with:
+        release-count: 1
 
-      # Push CHANGELOG.md and updated version files (optional)
-      - name: Commit Changelog and Package files
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add CHANGELOG.md package.json
-          git commit -m "chore(release): update changelog and package.json to v${{ steps.version.outputs.new_version }}"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
+    - name: Push version tag
+      run: |
+        git config --global user.email "youremail@example.com"
+        git config --global user.name "your-github-username"
+        git push --follow-tags origin main
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        body: ${{ steps.version.outputs.release_notes }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
