@@ -29,6 +29,8 @@ jobs:
     - name: Bump version using standard-version
       run: |
         npx standard-version
+        TAG=$(git describe --tags --abbrev=0)  # Get the latest tag
+        echo "TAG=$TAG" >> $GITHUB_ENV         # Store tag in environment variable
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -49,7 +51,7 @@ jobs:
       if: github.event_name == 'push'
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ steps.version.outputs.latest_version }}
+        tag_name: ${{ env.TAG }}
         body: |
           ${{ steps.version.outputs.release_notes }}
       env:
