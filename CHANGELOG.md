@@ -1,3 +1,15 @@
+# [2.5.0](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v2.4.1...v2.5.0) (2024-09-08)
+
+
+### Bug Fixes
+
+* reverse number method ([25835cb](https://github.com/DevRiteshPanchal/realese-notes-test/commit/25835cb94245ce91b34da3133f43d04704275cc6))
+
+
+### Features
+
+* add 3 fucntions ([e38830e](https://github.com/DevRiteshPanchal/realese-notes-test/commit/e38830e3679585bfbc13ce61b76a1c811aa90f79))
+
 ## [2.4.1](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v2.4.0...v2.4.1) (2024-09-08)
 
 
