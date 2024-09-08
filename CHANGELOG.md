@@ -1,3 +1,16 @@
+## [2.3.5](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v2.3.4...v2.3.5) (2024-09-08)
+
+
+### Bug Fixes
+
+* 2 ([#95](https://github.com/DevRiteshPanchal/realese-notes-test/issues/95)) ([cd16b61](https://github.com/DevRiteshPanchal/realese-notes-test/commit/cd16b61c38b98012113f1bbda1c4fe7071515e87))
+* gitbot ([#82](https://github.com/DevRiteshPanchal/realese-notes-test/issues/82)) ([d53e881](https://github.com/DevRiteshPanchal/realese-notes-test/commit/d53e881b18822cd8a03d90437e7159846b187bee))
+* some ([#108](https://github.com/DevRiteshPanchal/realese-notes-test/issues/108)) ([bda91a4](https://github.com/DevRiteshPanchal/realese-notes-test/commit/bda91a4cfddef00c6cc9ae1021a379d86d3b8479))
+* some ([#109](https://github.com/DevRiteshPanchal/realese-notes-test/issues/109)) ([3e03cee](https://github.com/DevRiteshPanchal/realese-notes-test/commit/3e03cee5c166bf0899ec810481e48f3e0982a3c8))
+* some ([#81](https://github.com/DevRiteshPanchal/realese-notes-test/issues/81)) ([a862800](https://github.com/DevRiteshPanchal/realese-notes-test/commit/a862800a1c9f340878323113d2b25be9fd22faf4))
+* some thing ([#111](https://github.com/DevRiteshPanchal/realese-notes-test/issues/111)) ([3dab469](https://github.com/DevRiteshPanchal/realese-notes-test/commit/3dab469a4c25b522d788d8ba7cdf90d28f0a8c88))
+* test ([#105](https://github.com/DevRiteshPanchal/realese-notes-test/issues/105)) ([ba294ee](https://github.com/DevRiteshPanchal/realese-notes-test/commit/ba294eebabc1b2821052423d18c725b11e8398a5))
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
