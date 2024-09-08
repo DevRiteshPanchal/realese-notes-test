@@ -49,6 +49,7 @@ jobs:
       if: github.event_name == 'push'
       uses: softprops/action-gh-release@v1
       with:
+        tag_name: ${{ github.sha }} 
         body: |
           ${{ steps.version.outputs.release_notes }}
       env:
