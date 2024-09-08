@@ -20,17 +20,37 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Publish Draft Release
+    - name: Find Draft Release
+      id: find_release
       run: |
-        # Fetch the tag name of the most recent release
-        RELEASE_TAG=$(gh release list --limit 1 --json tagName,isDraft --jq '.[] | select(.isDraft == true) | .tagName')
+        # Find the latest draft release using GitHub API
+        DRAFT_RELEASE=$(curl -s \
+          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/${{ github.repository }}/releases \
+          | jq '.[] | select(.draft == true) | {id: .id, tag_name: .tag_name}' | head -n 1)
         
-        # Check if a draft release is found
-        if [ -n "$RELEASE_TAG" ]; then
-          echo "Publishing release with tag: $RELEASE_TAG"
-          gh release edit "$RELEASE_TAG" --draft=false
-        else
+        # Extract the release ID and tag name
+        RELEASE_ID=$(echo "$DRAFT_RELEASE" | jq -r '.id')
+        TAG_NAME=$(echo "$DRAFT_RELEASE" | jq -r '.tag_name')
+        
+        if [ -z "$RELEASE_ID" ]; then
           echo "No draft release found."
+          exit 1
         fi
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        echo "Draft release found with ID: $RELEASE_ID and Tag: $TAG_NAME"
+        echo "RELEASE_ID=$RELEASE_ID" >> $GITHUB_ENV
+        echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+
+    - name: Publish Draft Release
+      if: success()
+      run: |
+        # Publish the draft release using GitHub API
+        curl -X PATCH \
+          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/${{ github.repository }}/releases/${{ env.RELEASE_ID }} \
+          -d '{"draft":false}'
+
+        echo "Release published with tag: ${{ env.TAG_NAME }}"
