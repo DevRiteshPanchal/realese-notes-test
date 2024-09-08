@@ -20,3 +20,9 @@ const square =(a,b)=>{
 // test
 // test
 // test
+
+// write a function that takes in a string and returns the string in reverse
+
+const reverseString = (str) => {
+  return str.split('').reverse().join('')
+}
