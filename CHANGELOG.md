@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v2.4.0...v2.4.1) (2024-09-08)
+
+
+### Bug Fixes
+
+* reverse string issue ([#126](https://github.com/DevRiteshPanchal/realese-notes-test/issues/126)) ([4b90bfc](https://github.com/DevRiteshPanchal/realese-notes-test/commit/4b90bfca2e1d9f3d67ac3349c7d5b0aeac345eef))
+
 # [2.4.0](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v2.3.5...v2.4.0) (2024-09-08)
 
 
