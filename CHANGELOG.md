@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v2.3.5...v2.4.0) (2024-09-08)
+
+
+### Features
+
+* reverse string ([#125](https://github.com/DevRiteshPanchal/realese-notes-test/issues/125)) ([9ca9a89](https://github.com/DevRiteshPanchal/realese-notes-test/commit/9ca9a89df460e56ac13e985e320c746e66ff3e09))
+
 ## [2.3.5](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v2.3.4...v2.3.5) (2024-09-08)
 
 
