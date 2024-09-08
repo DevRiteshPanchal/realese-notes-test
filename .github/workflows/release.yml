@@ -4,9 +4,14 @@ on:
   push:
     branches:
       - main  # Replace with your main branch
+permissions:
+  contents: read
 
 jobs:
   release:
+    permissions:
+      # write permission is required to create a github release
+      contents: write
     runs-on: ubuntu-latest
 
     steps:
@@ -41,7 +46,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create draft release with Release Drafter
-      uses: release-drafter/release-drafter@v5
+      uses: release-drafter/release-drafter@v6
       with:
         version: ${{ steps.version.outputs.version }}
         config-name: release-drafter.yml
