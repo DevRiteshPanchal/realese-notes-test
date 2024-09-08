@@ -25,3 +25,7 @@ const square =(a,b)=>{
 function reverseString(str1) {
   return str1.split("").reverse().join("");
 }
+// function to filter out numbers from an array
+function filterNumbers(arr) {
+  return arr.filter((item) => typeof item === "number");
+}
