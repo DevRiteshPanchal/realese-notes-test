@@ -25,12 +25,12 @@ jobs:
       run: |
         npx standard-version
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
     - name: Push version and tags
       run: |
-        git config --global user.email "you@example.com"
-        git config --global user.name "Your Name"
+        git config --global user.email "riteshpanchal16@gmail.com"
+        git config --global user.name "RiteshPanchal16"
         git push --follow-tags origin main
 
     - name: Create draft release with Release Drafter
@@ -38,7 +38,7 @@ jobs:
       with:
         version: ${{ steps.version.outputs.version }}
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
     - name: Publish the release
       if: github.event_name == 'push'
@@ -47,4 +47,4 @@ jobs:
         body: |
           ${{ steps.version.outputs.release_notes }}
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
