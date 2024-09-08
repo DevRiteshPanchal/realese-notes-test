@@ -34,9 +34,9 @@ jobs:
 
     - name: Push version and tags
       run: |
-        git config user.email "riteshpanchal16@gmail.com"
-        git config user.name "RiteshPanchal16"
         git push --follow-tags origin main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create draft release with Release Drafter
       uses: release-drafter/release-drafter@v5
