@@ -35,8 +35,8 @@ function filterStrings(arr2) {
   return arr2.filter((item) => typeof item === "string");
 }
 // fuction to reverse a number
-function reverseNumber(num) {
-  return parseFloat(num.toString().split("").reverse().join(""));
+function reverseNumber(num1) {
+  return parseFloat(num1.toString().split("").reverse().join(""));
 }
 
 // function to filter out even numbers from an array
