@@ -12,6 +12,30 @@
 
 * reverse string ([#125](https://github.com/DevRiteshPanchal/realese-notes-test/issues/125)) ([9ca9a89](https://github.com/DevRiteshPanchal/realese-notes-test/commit/9ca9a89df460e56ac13e985e320c746e66ff3e09))
 
+## [1.8.0](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v1.7.0...v1.8.0) (2024-09-08)
+
+
+### Features
+
+* add tree fun ([02cb43f](https://github.com/DevRiteshPanchal/realese-notes-test/commit/02cb43f92df951660423e2b138252e6cbf8c3f21))
+* reverse string ([#125](https://github.com/DevRiteshPanchal/realese-notes-test/issues/125)) ([9ca9a89](https://github.com/DevRiteshPanchal/realese-notes-test/commit/9ca9a89df460e56ac13e985e320c746e66ff3e09))
+* sematic commits ([#73](https://github.com/DevRiteshPanchal/realese-notes-test/issues/73)) ([500fc75](https://github.com/DevRiteshPanchal/realese-notes-test/commit/500fc7529428c863fdf509ca9d2548392eaf90df))
+
+
+### Bug Fixes
+
+* 2 ([#95](https://github.com/DevRiteshPanchal/realese-notes-test/issues/95)) ([cd16b61](https://github.com/DevRiteshPanchal/realese-notes-test/commit/cd16b61c38b98012113f1bbda1c4fe7071515e87))
+* data ([#79](https://github.com/DevRiteshPanchal/realese-notes-test/issues/79)) ([c600b83](https://github.com/DevRiteshPanchal/realese-notes-test/commit/c600b839843ca39680666f309f043d637ca7e8f3))
+* gitbot ([#82](https://github.com/DevRiteshPanchal/realese-notes-test/issues/82)) ([d53e881](https://github.com/DevRiteshPanchal/realese-notes-test/commit/d53e881b18822cd8a03d90437e7159846b187bee))
+* reverse string issue ([#126](https://github.com/DevRiteshPanchal/realese-notes-test/issues/126)) ([4b90bfc](https://github.com/DevRiteshPanchal/realese-notes-test/commit/4b90bfca2e1d9f3d67ac3349c7d5b0aeac345eef))
+* some ([#108](https://github.com/DevRiteshPanchal/realese-notes-test/issues/108)) ([bda91a4](https://github.com/DevRiteshPanchal/realese-notes-test/commit/bda91a4cfddef00c6cc9ae1021a379d86d3b8479))
+* some ([#109](https://github.com/DevRiteshPanchal/realese-notes-test/issues/109)) ([3e03cee](https://github.com/DevRiteshPanchal/realese-notes-test/commit/3e03cee5c166bf0899ec810481e48f3e0982a3c8))
+* some ([#74](https://github.com/DevRiteshPanchal/realese-notes-test/issues/74)) ([913415f](https://github.com/DevRiteshPanchal/realese-notes-test/commit/913415ff731ce84d2f328a90bb526b3393ae217b))
+* some ([#81](https://github.com/DevRiteshPanchal/realese-notes-test/issues/81)) ([a862800](https://github.com/DevRiteshPanchal/realese-notes-test/commit/a862800a1c9f340878323113d2b25be9fd22faf4))
+* some thing ([#111](https://github.com/DevRiteshPanchal/realese-notes-test/issues/111)) ([3dab469](https://github.com/DevRiteshPanchal/realese-notes-test/commit/3dab469a4c25b522d788d8ba7cdf90d28f0a8c88))
+* somthing ([#70](https://github.com/DevRiteshPanchal/realese-notes-test/issues/70)) ([4b59808](https://github.com/DevRiteshPanchal/realese-notes-test/commit/4b59808d6dbc62ea12e88e060a6ba7aa321ed080))
+* test ([#105](https://github.com/DevRiteshPanchal/realese-notes-test/issues/105)) ([ba294ee](https://github.com/DevRiteshPanchal/realese-notes-test/commit/ba294eebabc1b2821052423d18c725b11e8398a5))
+
 ## [2.3.5](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v2.3.4...v2.3.5) (2024-09-08)
 
 
