@@ -22,10 +22,10 @@ jobs:
 
     - name: Publish Draft Release
       run: |
-        RELEASE_ID=$(gh release list --limit 1 --json id,isDraft --jq '.[] | select(.isDraft == true) | .id')
-        if [ -n "$RELEASE_ID" ]; then
-          echo "Publishing release with ID: $RELEASE_ID"
-          gh release edit $RELEASE_ID --draft=false
+        RELEASE_TAG=$(gh release list --limit 1 --json tagName,isDraft --jq '.[] | select(.isDraft == true) | .tagName')
+        if [ -n "$RELEASE_TAG" ]; then
+          echo "Publishing release with tag: $RELEASE_TAG"
+          gh release edit "$RELEASE_TAG" --draft=false
         else
           echo "No draft release found."
         fi
