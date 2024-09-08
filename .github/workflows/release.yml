@@ -41,36 +41,29 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Debug version
-      run: |
-        echo "Latest tag: ${{ env.TAG }}"
-        echo "Captured version: ${{ env.version }}"
-
     - name: Push version and tags
       run: |
         git push --follow-tags origin main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Create draft release with Release Drafter
-      id: drafter
-      uses: release-drafter/release-drafter@v6
-      with:
-        config-name: release-drafter.yml
+    - name: Generate release notes
+      id: release-notes
+      run: |
+        npx conventional-changelog-cli -p angular -i CHANGELOG.md -s
+        echo "RELEASE_NOTES=$(cat CHANGELOG.md)" >> $GITHUB_ENV
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Debug draft release
+    - name: Debug release notes
       run: |
-        cat .github/release-drafter.yml
-        echo "Draft release created. Check Release Drafter configuration."
+        echo "Release notes: ${{ env.RELEASE_NOTES }}"
 
-    - name: Publish the release
+    - name: Create GitHub Release
       if: github.event_name == 'push'
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ env.TAG }}
-        body: |
-          $(cat CHANGELOG.md)  # Use generated changelog file
+        body: ${{ env.RELEASE_NOTES }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
