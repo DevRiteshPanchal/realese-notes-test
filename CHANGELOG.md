@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.7.12 (2024-09-08)
+
+
+### Bug Fixes
+
+* some ([#109](https://github.com/DevRiteshPanchal/realese-notes-test/issues/109)) ([3e03cee](https://github.com/DevRiteshPanchal/realese-notes-test/commit/3e03cee5c166bf0899ec810481e48f3e0982a3c8))
+
 ### 1.7.11 (2024-09-08)
 
 
