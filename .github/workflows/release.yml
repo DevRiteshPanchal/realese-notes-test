@@ -22,7 +22,10 @@ jobs:
 
     - name: Publish Draft Release
       run: |
+        # Fetch the tag name of the most recent release
         RELEASE_TAG=$(gh release list --limit 1 --json tagName,isDraft --jq '.[] | select(.isDraft == true) | .tagName')
+        
+        # Check if a draft release is found
         if [ -n "$RELEASE_TAG" ]; then
           echo "Publishing release with tag: $RELEASE_TAG"
           gh release edit "$RELEASE_TAG" --draft=false
