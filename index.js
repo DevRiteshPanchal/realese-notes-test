@@ -31,6 +31,6 @@ function filterNumbers(arr1) {
 }
 
 // function to filter out even numbers from an array
-function filterEvenNumbers(arr1) {
-  return arr1.filter((item) => item % 2 === 0);
+function filterEvenNumbers(arr) {
+  return arr.filter((item) => item % 2 === 0);
 }
