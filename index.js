@@ -29,3 +29,8 @@ function reverseString(str1) {
 function filterNumbers(arr1) {
   return arr1.filter((item) => typeof item === "number");
 }
+
+// function to filter out even numbers from an array
+function filterEvenNumbers(arr1) {
+  return arr1.filter((item) => item % 2 === 0);
+}
