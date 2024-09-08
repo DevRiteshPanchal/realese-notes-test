@@ -3,14 +3,14 @@ name: Release
 on:
   push:
     branches:
-      - main  # Replace with your main branch
+      - main
+
 permissions:
   contents: read
 
 jobs:
   release:
     permissions:
-      # write permission is required to create a github release
       contents: write
     runs-on: ubuntu-latest
 
@@ -32,12 +32,19 @@ jobs:
         git config --local user.name "RiteshPanchal16"
 
     - name: Bump version using standard-version
+      id: version
       run: |
         npx standard-version
-        TAG=$(git describe --tags --abbrev=0)  # Get the latest tag
-        echo "TAG=$TAG" >> $GITHUB_ENV         # Store tag in environment variable
+        TAG=$(git describe --tags --abbrev=0)
+        echo "TAG=$TAG" >> $GITHUB_ENV
+        echo "version=$TAG" >> $GITHUB_ENV
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Debug version
+      run: |
+        echo "Latest tag: ${{ env.TAG }}"
+        echo "Captured version: ${{ env.version }}"
 
     - name: Push version and tags
       run: |
@@ -46,12 +53,17 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create draft release with Release Drafter
+      id: drafter
       uses: release-drafter/release-drafter@v6
       with:
-        version: ${{ steps.version.outputs.version }}
         config-name: release-drafter.yml
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Debug draft release
+      run: |
+        cat .github/release-drafter.yml
+        echo "Draft release created. Check Release Drafter configuration."
 
     - name: Publish the release
       if: github.event_name == 'push'
@@ -59,6 +71,6 @@ jobs:
       with:
         tag_name: ${{ env.TAG }}
         body: |
-          ${{ steps.version.outputs.release_notes }}
+          $(cat CHANGELOG.md)  # Use generated changelog file
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
