@@ -19,11 +19,15 @@ jobs:
         config-name: release-drafter.yml
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Publish Release
-      if: github.event_name == 'push'
-      uses: softprops/action-gh-release@v1
-      with:
-        files: |
-          CHANGELOG.md
+
+    - name: Install GitHub CLI
+      run: sudo apt-get install gh
+
+    - name: Publish Draft Release
+      run: |
+        RELEASE_ID=$(gh release list --limit 1 --json id --jq '.[0].id')
+        if [ -n "$RELEASE_ID" ]; then
+          gh release edit $RELEASE_ID --draft=false
+        fi
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
