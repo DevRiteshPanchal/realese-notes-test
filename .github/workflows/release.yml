@@ -1,4 +1,4 @@
-name: Draft Release
+name: Release
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  draft-release:
+  release:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,14 +20,14 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Install GitHub CLI
-      run: sudo apt-get install gh
-
     - name: Publish Draft Release
       run: |
-        RELEASE_ID=$(gh release list --limit 1 --json id --jq '.[0].id')
+        RELEASE_ID=$(gh release list --limit 1 --json id,isDraft --jq '.[] | select(.isDraft == true) | .id')
         if [ -n "$RELEASE_ID" ]; then
+          echo "Publishing release with ID: $RELEASE_ID"
           gh release edit $RELEASE_ID --draft=false
+        else
+          echo "No draft release found."
         fi
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
