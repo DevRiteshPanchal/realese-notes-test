@@ -29,18 +29,3 @@ function reverseString(str1) {
 function filterNumbers(arr1) {
   return arr1.filter((item) => typeof item === "number");
 }
-
-// function to filter odd numbers
-function filterOddNumbers(arr1) {
-  return arr1.filter((item) => item % 2 !== 0);
-}
-
-// function to filter even numbers
-function filterEvenNumbers(arr1) {
-  return arr1.filter((item) => item % 2 === 0);
-}
-
-// function to find the maximum number in an array
-function findMax(arr1) {
-  return Math.max(...arr1);
-}
