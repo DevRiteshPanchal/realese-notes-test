@@ -22,6 +22,6 @@ const square =(a,b)=>{
 // test
 
 // function to reverse a string
-function reverseString(str) {
-  return str.split("").reverse().join("");
+function reverseString(str1) {
+  return str1.split("").reverse().join("");
 }
