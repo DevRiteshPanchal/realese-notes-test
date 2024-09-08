@@ -29,3 +29,17 @@ function reverseString(str1) {
 function filterNumbers(arr1) {
   return arr1.filter((item) => typeof item === "number");
 }
+
+// fucntion to filter out string from an array
+function filterStrings(arr2) {
+  return arr2.filter((item) => typeof item === "string");
+}
+// fuction to reverse a number
+function reverseNumber(num) {
+  return parseFloat(num.toString().split("").reverse().join(""));
+}
+
+// function to filter out even numbers from an array
+function filterEvenNumbers(arr3) {
+  return arr3.filter((item) => item % 2 === 0);
+}
