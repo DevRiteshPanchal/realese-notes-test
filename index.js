@@ -37,7 +37,7 @@ function filterOddNumbers(arr1) {
 
 // function to filter even numbers
 function filterEvenNumbers(arr1) {
-  return arr1.filter((item) => item % 2 === 0);
+  return arr1.filter((i) => i % 2 === 0);
 }
 
 // function to find the maximum number in an array
