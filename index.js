@@ -26,6 +26,6 @@ function reverseString(str1) {
   return str1.split("").reverse().join("");
 }
 // function to filter out numbers from an array
-function filterNumbers(arr) {
-  return arr.filter((item) => typeof item === "number");
+function filterNumbers(arr1) {
+  return arr1.filter((item) => typeof item === "number");
 }
