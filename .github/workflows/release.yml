@@ -29,8 +29,8 @@ jobs:
 
     - name: Push version and tags
       run: |
-        git config --global user.email "riteshpanchal16@gmail.com"
-        git config --global user.name "RiteshPanchal16"
+        git config user.email "riteshpanchal16@gmail.com"
+        git config user.name "RiteshPanchal16"
         git push --follow-tags origin main
 
     - name: Create draft release with Release Drafter
