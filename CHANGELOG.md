@@ -1,3 +1,10 @@
+## [2.5.2](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v2.5.1...v2.5.2) (2024-09-09)
+
+
+### Bug Fixes
+
+* issue ([640f7b5](https://github.com/DevRiteshPanchal/realese-notes-test/commit/640f7b5778fa47ca2fa4dfbb0c709c685776a9f1))
+
 ## [2.5.1](https://github.com/DevRiteshPanchal/realese-notes-test/compare/v2.5.0...v2.5.1) (2024-09-08)
 
 
