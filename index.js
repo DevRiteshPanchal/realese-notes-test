@@ -34,3 +34,8 @@ function filterNumbers(arr1) {
 function filterEvenNumbers(arr) {
   return arr.filter((item) => item % 2 === 0);
 }
+
+// function to filter out odd numbers from an array odd
+function filterOddNumbers(arr) {
+  return arr.filter((item) => item % 2 !== 0);
+}
