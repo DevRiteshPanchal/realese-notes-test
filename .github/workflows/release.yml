@@ -10,13 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2  
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Use Node 18
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
-
+          node-version: 18
+          
       - name: Install dependencies
         run: yarn install
 
