@@ -1,6 +1,0 @@
-{
-  "standard-version": {
-    "releaseCommitMessageFormat": "release: {{currentTag}}",
-    "changelog": true
-  }
-}
