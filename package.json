@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@semantic-release/release-notes-generator": "^12.1.0",
     "semantic-release": "^22.0.12"
   }
 }

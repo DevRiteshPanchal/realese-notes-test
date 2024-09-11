@@ -1,4 +1,6 @@
 {
   "branches": ["production"],
-  "plugins": []
+  "plugins": [
+    "@semantic-release/release-notes-generator"
+  ]
 }
