@@ -1,4 +1,4 @@
-name: Rebase uat onto production
+name: Rebase uat onto production and run Semantic Release
 
 on:
   push:
@@ -11,10 +11,10 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout
+      - name: Checkout production branch
         uses: actions/checkout@v2
         with:
-          ref: 'uat'
+          ref: 'production'
           fetch-depth: 0
           lfs: true
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -23,7 +23,7 @@ jobs:
         run: |
           git config --local user.email "manish.bisht@magnifi.ai"
           git config --local user.name "github-actions[bot]"
-      
+
       - name: Use Node 18
         uses: actions/setup-node@v2
         with:
@@ -32,12 +32,20 @@ jobs:
       - name: Install Semantic Release Packages
         run: yarn global add @semantic-release/commit-analyzer@^11.1.0 @semantic-release/git@^10.0.1 @semantic-release/github@^9.2.6 @semantic-release/release-notes-generator@^12.1.0 semantic-release@^22.0.12
 
-      - name: Run Semantic Release
+      - name: Run Semantic Release on production
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: semantic-release
 
-      - name: Rebase onto uat
+      - name: Checkout uat branch
+        uses: actions/checkout@v2
+        with:
+          ref: 'uat'
+          fetch-depth: 0
+          lfs: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Rebase uat onto production
         run: |
           git fetch origin production
           git lfs fetch origin refs/remotes/origin/production
