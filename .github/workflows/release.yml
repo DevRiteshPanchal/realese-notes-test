@@ -1,4 +1,4 @@
-name: Release
+name: Rebase uat onto production
 
 on:
   push:
@@ -6,13 +6,24 @@ on:
       - production
 
 jobs:
-  release:
+  rebase:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          ref: 'uat'
+          fetch-depth: 0
+          lfs: true
+          token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Configure Git
+        run: |
+          git config --local user.email "manish.bisht@magnifi.ai"
+          git config --local user.name "github-actions[bot]"
+      
       - name: Use Node 18
         uses: actions/setup-node@v2
         with:
@@ -25,3 +36,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: semantic-release
+
+      - name: Rebase onto uat
+        run: |
+          git fetch origin production
+          git lfs fetch origin refs/remotes/origin/production
+          git rebase origin/production
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: 'uat'
+          force_with_lease: true
