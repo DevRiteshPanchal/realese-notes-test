@@ -39,3 +39,8 @@ function filterEvenNumbers(arr) {
 function filterOddNumbers(arr) {
   return arr.filter((item) => item % 2 !== 0);
 }
+
+// function to find the largest number in an array
+function findLargestNumber(arr) {
+  return Math.max(...arr);
+}
