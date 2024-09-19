@@ -13,20 +13,20 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: 'production'
           fetch-depth: 0
           lfs: true
           token: ${{ secrets.GITHUB_TOKEN }}                   
 
-      - name: Use Node 18
-        uses: actions/setup-node@v2
+      - name: Use Node 20
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Install Semantic Release Packages
-        run: yarn global add @semantic-release/commit-analyzer@^11.1.0 @semantic-release/git@^10.0.1 @semantic-release/github@^9.2.6 @semantic-release/release-notes-generator@^12.1.0 semantic-release@^22.0.12
+        run: yarn global add @semantic-release/commit-analyzer @semantic-release/git @semantic-release/github @semantic-release/release-notes-generator semantic-release
 
       - name: Run Semantic Release
         env:
